@@ -38,6 +38,7 @@
         </table>
 
         <?php
+
             $formMethod = isset($data['ingridient']) ? '/posts/updateIngredient' : '/posts/addIngredient';
         ?>
         <form action="<?php echo URLROOT.$formMethod; ?>" method="post">
