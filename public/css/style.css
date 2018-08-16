@@ -1,0 +1,141 @@
+body{
+    height: 100%;
+    height: 100%;
+    margin:auto;
+}
+
+
+.navbar-vertical {
+    height: auto;
+    width: 200px;
+    float:left;
+    margin-top: 24px;
+}
+
+.header-left a {
+    
+    text-align: center;
+    background-color: #cccccc; 
+    color: black; 
+    display: block; 
+    padding: 12px; 
+    text-decoration: none; 
+}
+
+.header-left a.active {
+    background-color: #ffcc33; 
+    color: white;
+    
+}
+
+.logo{
+    padding-left: 40%;
+    width: 200px;
+    height: 200px;
+}
+
+.navbar{
+    width: auto;
+    height: 200px;
+}
+
+.navbar-orizontal{
+    height: 20px;
+    background: #ffcc33;
+}
+
+.content-left{
+    margin-top: 24px;
+    padding: 25px;
+    padding-left: 10%;
+    width: auto;
+    float: left;
+/*    background-color: black;*/
+}
+
+.content-left select{
+  padding: 25px;
+  font-size: 20px;
+}
+
+.content-right{
+    margin-top: 70px;
+    padding-right: 20%;
+    width: auto;
+    float: right;
+    margin-bottom: 30px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*-------------------------Button Right--------------------------*/
+
+.ButtonAddposition{
+
+    float: right;
+    margin-right: 20%;
+    height: 20px;
+    width: 100px;
+    border-radius: 13px;
+    background-color: #ffcc33;
+    text-align: center;
+    padding: 10px;
+}
+.ButtonAddposition a{
+    
+    color: white;
+    
+}
+
+
+.ButtonAddposition input{
+    padding: 10px 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.ButtonAddposition select{
+    padding: 10px 30px;
+    margin-top: 10px;
+    font-size: 20px;
+    
+}
+/*-------------------------Button Left--------------------------*/
+
+.ButtonView {
+    padding: 10px 30px;
+    font-size: 15px;
+}
+
+.ButtonLeftposition{
+
+    float: left;
+    margin-left: 0.5%;
+    
+}
+
+.ButtonLeftposition input{
+    padding: 10px 30px;
+    margin-top: 10px;
+}
+
+.ButtonLeftposition select{
+    padding: 10px 30px;
+    margin-top: 10px;
+    font-size: 20px;
+    
+}
