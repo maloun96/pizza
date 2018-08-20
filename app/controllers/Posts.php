@@ -4,7 +4,7 @@ class Posts extends Controller{
     public $postModel;
 
     public function __construct() {
-        if(!$_SESSION['user_id']) {
+        if(!isset($_SESSION['user_id'])) {
             header('Location:'. URLROOT . '/users/login');
         }
 
@@ -15,7 +15,7 @@ class Posts extends Controller{
         $url = explode('/', $_GET['url']);
 
         if(isset($url[1]))
-            return $this->list($url[1]);
+            return $this->llist($url[1]);
 
         $data = [];
         $this->view('posts/index');
@@ -30,7 +30,7 @@ class Posts extends Controller{
         header('Location:'. URLROOT . '/posts/'.$_POST['idPizza']);
     }
 
-    public function list($id) {
+    public function llist($id) {
         $pizza = $this->postModel->getPost($id);
         $ingridiente = $this->postModel->getIngridiente($id);
         $data = [
@@ -49,7 +49,6 @@ class Posts extends Controller{
         header('Location:'. URLROOT . '/posts/'.$_POST['idPizza']);
     }
 
-    // Luam datele ingredientului
     public function update() {
         $pizza = $this->postModel->getPost($_POST['idPizza']);
         $ingridiente = $this->postModel->getIngridiente($_POST['idPizza']);
@@ -65,14 +64,46 @@ class Posts extends Controller{
         $this->view('posts/single', $data);
     }
 
-    // Face update in DB
+    
     public function updateIngredient() {
         $this->postModel->updateIngredient($_POST);
         header('Location:'. URLROOT . '/posts/'.$_POST['idPizza']);
     }
 
+    
+    
+//    --------------------------------------------------------------------------------
+    
     public function addpizza() {
         $this->postModel->addPizza($_POST);
         header('Location:'. URLROOT . '/pages/index');
     }
+    
+    public function updateP() {
+        $this->postModel->updateP($_POST);
+        header('Location:'. URLROOT . '/pages/index');
+    }
+    
+    public function updatePizza() {
+        $pizza = $this->postModel->getPost($_POST['idPizza']);
+        
+        $pizzaName = $this->postModel->getPizza($_POST['pizzaName']);
+        $pricePizza = $this->postModel->getPizza($_POST['pizzaPrice']);
+        $data = [
+            'pizza' => $pizza,
+            'pizzaName' => $pizzaName,
+            'pricePizza' => $pricePizza
+        ];
+        
+        $data = json_decode(json_encode($data), true);
+
+        $this->view('pages/index', $data);
+    }
+    public function deleteP(){
+        $this->postModel->deletePizza($_POST['idPizza']);
+        header('Location:'. URLROOT . '/pages/index');
+    }
+    
+ 
+    
 }
