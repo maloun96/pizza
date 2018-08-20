@@ -43,7 +43,7 @@ class Post extends AbstractModel {
     }
 
     public function updateIngredient($data) {
-        $this->db->query("UPDATE ingredientstable SET nameIngredient = '".$data['name']."', priceIngredient = '".$data['price']."', amountIngredient = '".$data['name']."' WHERE idIngredient = ".intval($_POST['idIngredient']));
+        $this->db->query("UPDATE ingredientstable SET nameIngredient = '".$data['name']."', priceIngredient = '".$data['price']."', amountIngredient = '".$data['amount']."' WHERE idIngredient = ".intval($_POST['idIngredient']));
         $this->db->execute();
     }
 
@@ -52,5 +52,23 @@ class Post extends AbstractModel {
         $this->db->query("INSERT INTO pizzatable (pizzaName, pizzaPrice) VALUES ('".$data['name']."', '".$data['price']."')");
         $this->db->execute();
     }
+    
+    public function updatePizza($data) {
+        $this->db->query("UPDATE pizzatable SET pizzaName = ". $data['pizzaName'].", pricePizza = ".$data['pizzaPrice']." WHERE idPizza = ". intval($_POST['idPizza']));
+        $this->db->execute();
+    }
+    
+    public function deletePizza($id) {
+        $this->db->query("DELETE FROM relation WHERE idPizza = ".intval($id));
+        $this->db->execute();
+        $this->db->query("DELETE FROM pizzatable WHERE idPizza = ".intval($id));
+        $this->db->execute();
+    }
+    
+     public function getPizza($id) {
+        $this->db->query("SELECT * FROM pizzatable WHERE idPizza = ".intval($id)." LIMIT 1");
+        return $this->db->single();
+    }
+
     
 }
